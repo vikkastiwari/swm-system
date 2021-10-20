@@ -1,5 +1,5 @@
 {
-  "DB_URI":"mongodb+srv://garbageportal:Anilrup@123@cluster0.hlp5i.mongodb.net/garbageportal?retryWrites=true&w=majority",
+  "DB_URI":"mongodb+srv://garbageportal:Durgesh95@123@cluster0.hlp5i.mongodb.net/garbageportal?retryWrites=true&w=majority",
   "jwtPrivateKey":"admin2345",
   "adminPassword":"dontAsk89"
 }
