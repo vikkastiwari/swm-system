@@ -28,9 +28,9 @@ app.use(express.json());
 
 app.use(cors({ exposedHeaders: ["x-auth-token"] }));
 
-// app.use("/", (req, res) => {
-//   return res.send(`All is well!`);
-// });
+app.use("/", (req, res) => {
+  return res.send(`All is well!`);
+ });
 app.use("/signin",Login);
 app.use("/register", userRegister);
 app.use("/bin", bin);
