@@ -1,0 +1,27 @@
+{
+  "name": "final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Bimalesh Seth,Durgesh",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.23.0",
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.9",
+    "winston": "^3.3.3"
+  },
+  "engines": {
+    "node": "14.18.0"
+  }
+}

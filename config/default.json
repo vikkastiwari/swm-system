@@ -1,0 +1,5 @@
+{
+  "DB_URI": "mongodb://localhost:27017/beproject",
+  "jwtPrivateKey":"admin2345",
+  "adminPassword":"dontAsk89"
+}
