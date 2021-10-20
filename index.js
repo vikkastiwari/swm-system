@@ -11,12 +11,12 @@ const express = require("express"),
   (user = require("./routes/user")),
   (cors = require("cors"));
 
-// const mongoDBUri = config.get("DB_URI");
+const mongoDBUri = config.get("DB_URI");
 mongoose
-  .connect("mongodb+srv://garbageportal:Anilrup@123@cluster0.hlp5i.mongodb.net/garbageportal?retryWrites=true&w=majority", {
-     useNewUrlParser: true,
-     useUnifiedTopology: true,
-     useFindAndModify: false,
+  .connect(mongoDBUri, {
+//      useNewUrlParser: true,
+//      useUnifiedTopology: true,
+//      useFindAndModify: false,
   })
   .then(() => {
     console.log("Connection established!");
