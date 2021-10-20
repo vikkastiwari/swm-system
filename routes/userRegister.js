@@ -33,23 +33,22 @@ router.post("/", async (req, res) => {
     AdminPassword: req.body.AdminPaaword,
     isAdmin: req.body.isAdmin,
   });
-  const token="will do";
-//   const salt = await Bcryptjs.genSalt(10);
-//   user.password = await Bcryptjs.hash(user.password, salt);
-//   const token = jwt.sign(
-//     {
-//       _id: user._id,
-//       email: user.email,
-//       password: user.password,
-//       AdminPassword: req.body.AdminPaaword,
-//       isAdmin: user.isAdmin,
-//     },
-//     config.get("jwtPrivateKey")
-//   );
+  const salt = await Bcryptjs.genSalt(10);
+   user.password = await Bcryptjs.hash(user.password, salt);
+  const token = jwt.sign(
+     {
+       _id: user._id,
+       email: user.email,
+       password: user.password,
+       AdminPassword: req.body.AdminPaaword,
+       isAdmin: user.isAdmin,
+     },
+     config.get("jwtPrivateKey")
+   );
   const result = await user.save();
   return res
     .header("x-auth-validation", token)
-    .header("access-control-expose-headers", "x-auth-validation")
+//     .header("access-control-expose-headers", "x-auth-validation")
     .send({
       Information: _.pick(result, ["_id", "name", "email", "password"]),
     });
