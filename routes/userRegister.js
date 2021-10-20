@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
   const result = await user.save();
   return res
     .header("x-auth-validation", token)
-//     .header("access-control-expose-headers", "x-auth-validation")
+     .header("access-control-expose-headers", "x-auth-validation")
     .send({
       Information: _.pick(result, ["_id", "name", "email", "password"]),
     });
