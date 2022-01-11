@@ -65,9 +65,9 @@ Here's why:
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Node.js](https://nodejs.org/)
+* [React](https://reactjs.org/)
+* [Vue](https://vuejs.org/)
+* [Node](https://nodejs.org/)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 
@@ -91,11 +91,11 @@ To get a local copy up and running follow these simple steps.
 ### Installation
 
 1. API Key - Not required
-2. Clone the repo
+2. Clone the repository
    ```sh
    git clone https://github.com/vikkastiwari/swm-system.git
    ```
-3. Install NPM packages
+3. Install npm packages
    ```sh
    npm install
    ```
@@ -111,7 +111,7 @@ To get a local copy up and running follow these simple steps.
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
