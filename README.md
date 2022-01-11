@@ -14,9 +14,9 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+<!--   <a href="https://github.com/vikkastiwari/swm-system">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  </a> -->
 
   <h3 align="center">SMART WASTE MANAGEMENT PORTAL</h3>
 
@@ -63,8 +63,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 The smart waste management system an initiative to save time & fuel and pledge to keep our nation clean. 
 
@@ -149,15 +147,14 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/vikkastiwari/swm-system.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
+[contributors-url]: https://github.com/vikkastiwari/swm-system/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/vikkastiwari/swm-system.svg?style=for-the-badge
+[forks-url]: https://github.com/vikkastiwari/swm-system/network/members
+[stars-shield]: https://img.shields.io/github/stars/vikkastiwari/swm-system.svg?style=for-the-badge
+[stars-url]: https://github.com/vikkastiwari/swm-system/stargazers
+[issues-shield]: https://img.shields.io/github/issues/vikkastiwari/swm-system.svg?style=for-the-badge
+[issues-url]: https://github.com/vikkastiwari/swm-system/issues
+[license-shield]: https://img.shields.io/github/license/vikkastiwari/swm-system.svg?style=for-the-badge
+[license-url]: https://github.com/vikkastiwari/swm-system/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
