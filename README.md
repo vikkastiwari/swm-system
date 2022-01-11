@@ -67,7 +67,7 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * [React](https://reactjs.org/)
 * [Vue](https://vuejs.org/)
-* [Node](https://nodejs.org/)
+* [Node.js](https://nodejs.org/)
 * [Bootstrap](https://getbootstrap.com)
 * [JQuery](https://jquery.com)
 
