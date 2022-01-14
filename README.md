@@ -1,6 +1,5 @@
 <div id="top"></div>
 
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -11,7 +10,7 @@
   <h3 align="center">SMART WASTE MANAGEMENT PORTAL</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    An awesome README template to jumpstart your projects
     <br />
     <a href="https://github.com/vikkastiwari/swm-system/">View Code</a>
     ·
