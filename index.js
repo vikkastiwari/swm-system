@@ -38,6 +38,13 @@ app.use("/binType", binType);
 app.use("/vehicle", vehicle);
 app.use("/user", user);
 
+app.get("/",(req,res)=>{
+  res.status(200).send([
+  "/signin->fir sing in","/register->for register"
+  ])
+  
+});
+
 app.listen(Port, () =>
   console.log(`Server listening on http://localhost:${Port}`)
 );
