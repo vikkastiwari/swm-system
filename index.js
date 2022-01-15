@@ -40,7 +40,14 @@ app.use("/user", user);
 
 app.get("/",(req,res)=>{
   res.status(200).send([
-  "/signin->fir sing in","/register->for register"
+    "This API is using for our final year project using library like lodash,express,mogoDB,winston,config etc;",
+    "Contributer->Durgesh Tiwari,Vikas Tiwari,Bimalesh Seth",
+    "/signin->for sing in",
+    "/register->for register",
+    "/bin ->for requsting no of bins",
+    "/binType -> This is give information about type of bins we are using are",
+    "/Vehical ->Vechical type and and information",
+    "/user ->This is given idea about user and super user in our application but information is limited to admin user only"
   ])
   
 });
