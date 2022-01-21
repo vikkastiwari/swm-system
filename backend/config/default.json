@@ -1,3 +1,5 @@
 {
-  "DB_URI": "mongodb://localhost:27017/beproject"
+  "DB_URI":"mongodb+srv://red98:Red1998@cluster0.hsmsa.mongodb.net/garbageportal?retryWrites=true&w=majority",
+  "jwtPrivateKey":"admin2345",
+  "adminPassword":"dontAsk89"
 }
