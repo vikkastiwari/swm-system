@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+
 import * as actions from "../../Store/actions";
 import Feather from "../Icons/Feather";
 
 class Login extends Component {
-  state = { erpId: "", password: "" };
-
+  state = { email: "", password: "" };
+  
   componentDidMount() {
     var togglePassword = document.getElementById("toggle-password");
     if (togglePassword) {
@@ -30,15 +31,16 @@ class Login extends Component {
     e.preventDefault();
 
     this.props.userLogin({
-      erpId: this.state.erpId,
+      email: this.state.email,
       password: this.state.password,
     });
 
-    this.setState({ erpId: "", password: "" });
-    this.props.history.replace("/");
+    // this.setState({ email: "", password: "" });
+    // this.props.history.replace("/");
   };
 
   render() {
+   
     return (
       <div className="form-container">
         <div className="form-form">
@@ -62,13 +64,13 @@ class Login extends Component {
                     <div id="username-field" className="field-wrapper input">
                       <Feather name="user" />
                       <input
-                        id="erpId"
-                        name="erpId"
+                        id="email"
+                        name="email"
                         type="text"
                         className="form-control"
-                        placeholder="ERP ID"
-                        value={this.state.erpId}
-                        onChange={(e) => this.inputHandler(e, "erpId")}
+                        placeholder="Email ID"
+                        value={this.state.email}
+                        onChange={(e) => this.inputHandler(e, "email")}
                         required
                       />
                     </div>

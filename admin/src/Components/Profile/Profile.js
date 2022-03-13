@@ -12,47 +12,12 @@ class Profile extends Component {
   }
 
   render() {
-    let user = null;
-    let degree = null;
-    let semester = null;
-    if (this.props.user) {
-      if (this.props.user.accessCode == "Student") {
-        user = (
-          <>
-            {CustomIcon.student}
-            {this.props.user.accessCode}
-          </>
-        );
-
-        semester = (
-          <li className='contacts-block__item'>
-            <i data-feather='layers'></i>
-            {this.props.user.Semester
-              ? "Semester " + this.props.user.Semester.semester
-              : " - "}
-          </li>
-        );
-
-        degree = (
-          <li className='contacts-block__item'>
-            {CustomIcon.diploma}
-            {this.props.user.Degree ? this.props.user.Degree.degreeName : " - "}
-          </li>
-        );
-      } else {
-        user = (
-          <>
-            {CustomIcon.teacher}
-            {this.props.user.accessCode}
-          </>
-        );
-      }
-    }
+   
     return (
       <>
         {/*  <!--  BEGIN CONTENT AREA  --> */}
         <div id='content' className='main-content'>
-          <div className='container' style={{ margin: "auto" }}>
+          <div className='container' style={{ margin: 'auto' }}>
             <div className='container'>
               <div className='row layout-top-spacing justify-content-center'>
                 <div
@@ -76,16 +41,12 @@ class Profile extends Component {
                                 />
                                 <p className=''>
                                   {this.props.user
-                                    ? this.props.user.firstName +
-                                      " " +
-                                      this.props.user.middleName +
-                                      " " +
-                                      this.props.user.lastName
+                                    ? this.props.user.name
                                     : null}
                                 </p>
                                 <h6>
                                   {this.props.user
-                                    ? "( " + this.props.user.erpId + " )"
+                                    ? '( ' + this.props.user.mobileNo + ' )'
                                     : null}
                                 </h6>
                               </div>
@@ -93,38 +54,18 @@ class Profile extends Component {
                                 <div className=''>
                                   <ul className='contacts-block list-unstyled'>
                                     <li className='contacts-block__item'>
-                                      {user}
-                                    </li>
-                                    <li className='contacts-block__item'>
-                                      <i data-feather='calendar'></i>
-                                      {this.props.user
-                                        ? moment(
-                                            this.props.user.DOB.split("/")
-                                              .reverse()
-                                              .join("-")
-                                          ).format("Do MMMM, YYYY")
-                                        : " - "}
-                                    </li>
-                                    <li className='contacts-block__item'>
                                       <i data-feather='mail'></i>
                                       {this.props.user
                                         ? this.props.user.email
-                                        : " - "}
+                                        : ' - '}
                                     </li>
                                     <li className='contacts-block__item'>
                                       <i data-feather='phone'></i>
                                       {this.props.user
                                         ? this.props.user.mobileNo
-                                        : " - "}
+                                        : ' - '}
                                     </li>
-                                    {degree}
-                                    <li className='contacts-block__item'>
-                                      {CustomIcon.branch}
-                                      {this.props.user && this.props.user.Branch
-                                        ? this.props.user.Branch.branchName
-                                        : " - "}
-                                    </li>
-                                    {semester}
+                                    
                                   </ul>
                                 </div>
                               </div>

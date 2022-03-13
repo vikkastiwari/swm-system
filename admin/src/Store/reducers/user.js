@@ -28,11 +28,14 @@ const reducer = (state = initialState, action) => {
       if (action.error && action.error.response && action.error.response.data) {
         if (action.error.response.data.error) {
           message = action.error.response.data.error;
+          Notification(message, 'danger');
         } else {
           message = action.error.response.data;
+          message.alerts.forEach(alert => {
+            Notification(alert.message, alert.type)
+          });
         }
       }
-      Notification(message, "danger");
       return state;
     case "Success":
       Notification(action.data, "success");

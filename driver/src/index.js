@@ -5,33 +5,36 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 
-import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import "./index.css";
+import auth from './Store/reducers/auth';
+import user from './Store/reducers/user';
 
-// const composeEnhancers =
-//   process.env.NODE_ENV === "development"
-//     ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-//     : compose;
+const composeEnhancers =
+  process.env.NODE_ENV === "development"
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : compose;
 
-// const rootReducer = combineReducers({
+const rootReducer = combineReducers({
+  auth,
+  user,
+});
 
-// });
-
-// const store = createStore(
-//   rootReducer,
-//   composeEnhancers(applyMiddleware(thunk))
-// );
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(thunk))
+);
 
 ReactDOM.render(
-  // <Provider store={store}>
+  <Provider store={store}>
   <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>,
-  // </Provider>
+  </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

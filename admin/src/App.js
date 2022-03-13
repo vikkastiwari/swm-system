@@ -18,6 +18,7 @@ import AssignBin from "./Components/AssignBin/AssignBin";
 import CreateUser from "./Components/User/CreateUser";
 import FetchUser from "./Components/User/FetchUser";
 import SAdminDashboard from "./Components/Dashboard/SAdmin";
+import Notification from "./Components/Notification/Notification";
 import $ from "jquery";
 import "@popperjs/core";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -32,7 +33,7 @@ import Register from "./Pages/Register";
 import Home from "./Pages/Home";
 import Task from "./Pages/Task";
 
-axios.defaults.baseURL = "http://localhost:8080";
+axios.defaults.baseURL = "http://localhost:5000";
 
 // console.log(axios.defaults.headers);
 let authToken = null;
@@ -49,12 +50,27 @@ axios.interceptors.request.use(
   }
 );
 
+axios.interceptors.response.use(
+  function (response) {
+    if(response && response.data && response.data.alerts){
+      response.data.alerts.forEach(alert => {
+        Notification(alert.message, alert.type);
+      });
+    }
+    return response;
+  },
+  function (error) {
+    // console.log(error)
+    return Promise.reject(error);
+  }
+);
+
 class App extends Component {
   loadScript = () => {};
 
   componentDidMount() {
     console.log(this.props.location.pathname);
-    // this.props.userAutoLogin();
+    this.props.userAutoLogin();
   }
 
   componentDidUpdate() {
@@ -123,8 +139,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   authToken = state.auth.token;
   return {
-    token: true,
-    // token: state.auth.token,
+    // token: true,
+    token: state.auth.token,
     user: state.auth.user,
   };
 };

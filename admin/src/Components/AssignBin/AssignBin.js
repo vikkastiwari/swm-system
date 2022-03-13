@@ -141,12 +141,12 @@ class ActivityFaculty extends Component {
       <>
         {/*  <!--  BEGIN CONTENT AREA  --> */}
         <div id='content' className='main-content'>
-          <div className='container' style={{ margin: "auto" }}>
+          <div className='container' style={{ margin: 'auto' }}>
             <div className='container'>
               <div className='row layout-top-spacing'>
                 <div
                   id='tableCheckbox'
-                  className='col-lg-12 col-12 layout-spacing'>
+                  className='col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing'>
                   <div className='statbox widget box box-shadow'>
                     <div className='widget-header'>
                       <div className='row '>
@@ -163,7 +163,7 @@ class ActivityFaculty extends Component {
                   <Modal
                     id='userAssignModal'
                     isUpdate={false}
-                    updateName={["", "Assign"]}
+                    updateName={['', 'Assign']}
                     submit={this.assignBinButton}>
                     <h5 className=''>Assign Bins</h5>
                     <form>
@@ -178,7 +178,7 @@ class ActivityFaculty extends Component {
                             placeholder='Select Vehicle...'
                             id='user-vehicle-select'
                             change={(values) =>
-                              this.dropdownHandler(values, "vehicleId")
+                              this.dropdownHandler(values, 'vehicleId')
                             }
                             value={this.state.vehicleId}>
                             {vehicles}
@@ -188,18 +188,18 @@ class ActivityFaculty extends Component {
 
                       <div
                         className='form-group row'
-                        style={{ marginTop: "50px" }}>
+                        style={{ marginTop: '50px' }}>
                         <label
                           htmlFor='colFormLabelLg'
                           className='col-sm-2 col-form-label col-form-label-lg font-weight-bold'>
-                          Faculties
+                          Bins
                         </label>
                         <div className='col-sm-10 text-center'>
                           <MultipleDropdown
                             placeholder='Select Bin...'
                             id='user-bin-select'
                             change={(values) =>
-                              this.dropdownHandler(values, "binIds")
+                              this.dropdownHandler(values, 'binIds')
                             }
                             value={this.state.binIds}>
                             {bins}

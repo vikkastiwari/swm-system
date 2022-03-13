@@ -7,7 +7,7 @@ import $ from "jquery";
 
 import countTo from "jquery-countto";
 
-class StudentDashboard extends Component {
+class Dashboard extends Component {
   state = {
     chart: null,
     options: {
@@ -76,8 +76,8 @@ class StudentDashboard extends Component {
         show: true,
         width: 25,
       },
-      series: [0, 0, 0],
-      labels: ["Drivers", "Admin", "Super Admin"],
+      series: [0, 0],
+      labels: ["Drivers", "Admin"],
       responsive: [
         {
           breakpoint: 1599,
@@ -90,7 +90,6 @@ class StudentDashboard extends Component {
               position: "bottom",
             },
           },
-
           breakpoint: 1439,
           options: {
             chart: {
@@ -115,7 +114,7 @@ class StudentDashboard extends Component {
 
   componentDidMount() {
     feather.replace();
-    // this.props.getAdminOverview();
+    this.props.getOverview();
 
     try {
       let chart = new ApexCharts(
@@ -131,10 +130,8 @@ class StudentDashboard extends Component {
   }
 
   componentDidUpdate() {
-    console.log("Admin dashboard updated");
-    // console.log(this.props.adminOverview.users);
-    // const { faculty, admin, student } = this.props.adminOverview.users;
-    // this.state.chart.updateSeries([student, faculty, admin]);
+    const { admin, driver } = this.props.overview.user;
+    this.state.chart.updateSeries([driver, admin]);
   }
 
   render() {
@@ -154,27 +151,27 @@ class StudentDashboard extends Component {
                           <div className="counter-container">
                             <div className="counter-content">
                               <h1 className="ico-counter1 ico-counter">
-                                {/* {this.props.adminOverview.activity} */}
+                                {this.props.overview.bin}
                               </h1>
                             </div>
 
                             <i
-                              data-feather="activity"
+                              data-feather="trash"
                               className="counter-ico"
                             ></i>
 
-                            <p className="ico-counter-text">Activity</p>
+                            <p className="ico-counter-text">Bins</p>
                           </div>
 
                           <div className="counter-container">
                             <div className="counter-content">
                               <h1 className="ico-counter3 ico-counter">
-                                {/* {this.props.adminOverview.category} */}
+                                {this.props.overview.vehicle}
                               </h1>
                             </div>
 
-                            <i data-feather="grid" className="counter-ico"></i>
-                            <p className="ico-counter-text">Category</p>
+                            <i data-feather="truck" className="counter-ico"></i>
+                            <p className="ico-counter-text">Tracks</p>
                           </div>
                         </div>
                       </div>
@@ -202,14 +199,14 @@ class StudentDashboard extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    // adminOverview: state.faculty.adminOverview,
+    overview: state.other.overview,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // getAdminOverview: () => dispatch(actions.getAdminOverview()),
+    getOverview: () => dispatch(actions.overview()),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentDashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
