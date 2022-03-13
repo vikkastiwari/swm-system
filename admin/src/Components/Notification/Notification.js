@@ -16,6 +16,9 @@ const Notification = (text, type) => {
     case "warning":
       color = { actionTextColor: "#fff", backgroundColor: "#e2a03f" };
       break;
+    case "error":
+      color = { actionTextColor: "#fff", backgroundColor: "#e7515a" };
+      break;
     case "danger":
       color = { actionTextColor: "#fff", backgroundColor: "#e7515a" };
       break;

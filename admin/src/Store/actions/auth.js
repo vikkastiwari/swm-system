@@ -28,21 +28,21 @@ export const userLogin = (body) => async (dispatch) => {
   axios
     .post(urls.USER_LOGIN, body)
     .then((res) => {
-      // console.log(res.headers["x-auth-token"]);
+      console.log(res);
       dispatch({
         type: actionTypes.USER_LOGIN,
-        data: res.data,
+        data: res.data.payload,
       });
 
-      localStorage.setItem("token", res.headers["x-auth-token"]);
+      localStorage.setItem('token', res.headers['x-auth-token']);
 
       dispatch({
         type: actionTypes.USER_TOKEN,
-        data: res.headers["x-auth-token"],
+        data: res.headers['x-auth-token'],
       });
     })
     .catch((err) => {
-      dispatch({ type: "Error", error: err });
+      dispatch({ type: 'Error', error: err });
     });
 };
 
@@ -63,7 +63,7 @@ export const userAutoLogin = () => async (dispatch) => {
       .then((res) => {
         dispatch({
           type: actionTypes.USER_LOGIN,
-          data: res.data,
+          data: res.data.payload,
         });
 
         dispatch({

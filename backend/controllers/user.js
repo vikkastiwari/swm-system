@@ -1,23 +1,53 @@
-const User = require("../models/user");
+const mongoose = require('mongoose');
+
+const User = require('../models/user');
 
 const getUser = async (req, res) => {
-  return res.send(await User.find());
+  const users = await User.find();
+
+  return res.status(200).send({
+    success: true,
+    payload: users,
+    alerts: [{ type: 'success', message: 'Users fetched successfully.' }],
+  });
 };
 
 const getUserByType = async (req, res) => {
   const userType = req.params.type;
+
   const users = await User.find({ userType: userType });
-  // .populate({ path: "vehicleId" })
-  // .populate({ path: "binIds" });
-  console.log(users);
-  return res.send(users);
+
+  return res.status(200).send({
+    success: true,
+    payload: users,
+    alerts: [{ type: 'success', message: 'Users fetched successfully.' }],
+  });
 };
 
 const getSingleUser = async (req, res) => {
   const { id } = req.params;
-  return res.send(
-    await User.findById(id).populate("vehicleId").populate("binIds")
-  );
+
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'Invalid userId provided.' }],
+    });
+  }
+
+  const user = await User.findById(id).populate('vehicleId').populate('binIds');
+
+  if (!user) {
+    return res.status(404).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'User not found.' }],
+    });
+  }
+
+  return res.status(200).send({
+    success: true,
+    payload: user,
+    alerts: [{ type: 'success', message: 'User details fetch successfully.' }],
+  });
 };
 
 const createUser = async (req, res) => {
@@ -34,12 +64,24 @@ const createUser = async (req, res) => {
 
   await newUser.save();
 
-  return res.send("User created successfully!");
+  return res.status(201).send({
+    success: true,
+    payload: newUser,
+    alerts: [{ type: 'success', message: 'User created successfully!' }],
+  });
 };
 
 const updateUser = async (req, res) => {
   const { name, userType, mobileNo, email, active } = req.body;
   const { id } = req.params;
+
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'Invalid userId provided.' }],
+    });
+  }
+
   const myUser = await User.findByIdAndUpdate(
     id,
     {
@@ -51,23 +93,74 @@ const updateUser = async (req, res) => {
     },
     { new: true }
   );
-  return res.send("User  updated successfully!");
+
+  if (!myUser) {
+    return res.status(404).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'User not found.' }],
+    });
+  }
+
+  return res.status(200).send({
+    success: true,
+    payload: myUser,
+    alerts: [{ type: 'success', message: 'User  updated successfully!' }],
+  });
 };
 
 const deleteUser = async (req, res) => {
   const { id } = req.params;
+
+  if (!mongoose.isValidObjectId(id)) {
+    return res.status(400).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'Invalid userId provided.' }],
+    });
+  }
+
   const myUser = await User.findByIdAndDelete(id);
-  return res.send("User deleted successfully!");
+
+  if (!myUser) {
+    return res.status(404).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'User not found.' }],
+    });
+  }
+
+  return res.status(200).send({
+    success: true,
+    alerts: [{ type: 'success', message: 'User deleted successfully!' }],
+  });
 };
 
 const assignBins = async (req, res) => {
   const { userId, vehicleId, binIds } = req.body;
+
+  if (!mongoose.isValidObjectId(userId)) {
+    return res.status(400).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'Invalid userId provided.' }],
+    });
+  }
+
   const user = await User.findByIdAndUpdate(
     userId,
     { vehicleId, binIds },
     { new: true }
   );
-  return res.send("Bins assigned successfully!");
+
+  if (!user) {
+    return res.status(404).send({
+      success: false,
+      alerts: [{ type: 'error', message: 'User not found.' }],
+    });
+  }
+
+  return res.status(200).send({
+    success: true,
+    payload: user,
+    alerts: [{ type: 'success', message: 'Bins assigned successfully!' }],
+  });
 };
 
 module.exports = {

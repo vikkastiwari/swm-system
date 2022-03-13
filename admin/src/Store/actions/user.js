@@ -9,7 +9,7 @@ const getUsers = (dispatch) => {
       console.log("User Fetched");
       dispatch({
         type: actionTypes.GET_USER,
-        data: res.data,
+        data: res.data.payload,
       });
       // dispatch({ type: "Success", data: "Users fetched successfully!" });
     })
@@ -29,7 +29,7 @@ export const getSingleUser = (id) => (dispatch) => {
       console.log("sINGLE User Fetched");
       dispatch({
         type: actionTypes.SINGLE_USER,
-        data: res.data,
+        data: res.data.payload,
       });
     })
     .catch((err) => {
@@ -44,7 +44,7 @@ const userByType = (type, dispatch) => {
       console.log(" Users Fetched");
       dispatch({
         type: actionTypes.GET_USER_BY_TYPE,
-        data: res.data,
+        data: res.data.payload,
       });
     })
     .catch((err) => {
@@ -64,7 +64,7 @@ export const createUser = (body) => (dispatch) => {
       console.log("User created");
       dispatch({
         type: actionTypes.CREATE_USER,
-        data: res.data,
+        data: res.data.payload,
       });
       dispatch({
         type: "Success",
@@ -100,7 +100,7 @@ export const updateUser =
         console.log("User updated");
         dispatch({
           type: actionTypes.UPDATE_USER,
-          data: res.data,
+          data: res.data.payload,
         });
         userByType(type, dispatch);
         dispatch({
@@ -122,7 +122,7 @@ export const deleteUser =
         console.log("User deleted");
         dispatch({
           type: actionTypes.DELETE_USER,
-          data: res.data,
+          data: res.data.payload,
         });
         userByType(type, dispatch);
         dispatch({

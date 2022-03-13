@@ -1,18 +1,14 @@
-import { useHistory } from "react-router-dom";
-import React, { useState, useEffect } from "react";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-const ScrollToTop = () => {
-  const history = useHistory();
+const ScrollReset = ({ children }) => {
+  const location = useLocation();
+
   useEffect(() => {
-    const unlisten = history.listen((location, action) => {
-      if (action !== "POP") {
-        window.scrollTo(0, 0);
-        console.log("Done");
-      }
-    });
-    return () => unlisten();
-  }, []);
-  return null;
+    window.scrollTo(0, 0);
+  }, [location]);
+
+  return <>{children}</>;
 };
 
-export default ScrollToTop;
+export default ScrollReset;
