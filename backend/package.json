@@ -19,7 +19,8 @@
     "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
-    "mongoose": "^6.0.9"
+    "mongoose": "^6.0.9",
+    "xlsx": "^0.18.4"
   },
   "engines": {
     "node": "14.18.0"

@@ -1,0 +1,14 @@
+Name,Node,Node Location X,Node Location Y,h(n),Traffic,Road Quality,Overflow Time
+Growels,Start,19.20217084,72.86162275,5,5,1,5
+TCET,A,19.205814,72.874331,6,6,3,3
+Dmart,B,19.208929,72.873734,8,8,2,2
+Oxford International School,C,19.206884,72.875899,4,4,3,4
+Shaheed Bhagat Singh Park,D,19.210426,72.872898,8,8,2,1
+Sai Mandir,E,19.205849,72.870515,7,7,2,5
+Thakur Polytechnic,F,19.21353,72.864917,3,3,1,3
+"Children's Academy, Thakur Complex",G,19.212483,72.86686,1,1,3,2
+Seven Star Multispeciality Hospital,H,19.211931,72.866869,5,5,3,4
+Shree Sai Hospital,I,19.213815,72.866982,2,2,2,1
+Monginis Cake Shop,J,19.20898884,72.86703277,4,4,1,5
+Growels,End,19.20217084,72.86162275,2,2,3,3
+,,,,,,,
