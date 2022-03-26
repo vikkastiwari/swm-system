@@ -1,5 +1,5 @@
 {
-  "DB_URI":"mongodb+srv://red98:Red1998@cluster0.hsmsa.mongodb.net/garbageportal?retryWrites=true&w=majority",
-  "jwtPrivateKey":"admin2345",
-  "adminPassword":"dontAsk89"
+  "DB_URI": "mongodb+srv://durgesh98:durgesh95@cluster0.akfch.mongodb.net/finalYearProject?retryWrites=true&w=majority",
+  "jwtPrivateKey": "admin2345",
+  "adminPassword": "dontAsk89"
 }
