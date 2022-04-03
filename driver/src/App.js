@@ -63,7 +63,7 @@ class App extends Component {
             });
           });
         },
-        3000,
+        30000,
         this.props.userData
       );
     }

@@ -3,14 +3,20 @@ import * as actions from "../../Store/actions/index";
 import {format} from 'date-fns'
 import { connect } from 'react-redux';
 import Footer from '../Footer/Footer';
+import withRouter from '../../hoc/withRouter';
 
 class Home extends Component {
   state = {};
   componentDidMount() {
+    console.log(this.props);
     const id = this.props?.user?._id;
     if(id){
       this.props.getData(id);
     }
+  }
+
+  changeActivity =  () => {
+    this.props.navigate("/activity")
   }
   render() {
     let myBins = null;
@@ -25,17 +31,17 @@ class Home extends Component {
             <div className='media-body'>
               <h5>{bin.bin}</h5>
               {/* <p className='mb-0'>Start Date: 28, July 2018</p> */}
-              <h2 className='title-number-carousel color-primary'>
+              {/* <h2 className='title-number-carousel color-primary'>
                 <span className='text-primary'>75</span>
                 <small>/100 %</small>
-              </h2>
+              </h2> */}
             </div>
             <div className='w-auto'>
-              <small className='text-success effort-time'>
+              {/* <small className='text-success effort-time'>
                 {' '}
                 2hrs <i className='material-icons'>arrow_drop_up</i>
               </small>
-              <div className='dynamicsparkline'></div>
+              <div className='dynamicsparkline'></div> */}
             </div>
           </a>
         </li>
@@ -75,7 +81,7 @@ class Home extends Component {
           </div>
           <div className='col-12 mb-4'>
             <div className='card'>
-              <div className='card-body'>
+              <div className='card-body' onClick={this.changeActivity}>
                 <p className='text-uppercase font-weight-bold text-primary'>
                   Activity
                 </p>
@@ -142,4 +148,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home));
