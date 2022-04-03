@@ -105,7 +105,7 @@ const Sidebar = (props) => {
                 aria-expanded='false'
                 className='dropdown-toggle'>
                 <div className=''>
-                  <Feather name='activity'></Feather>
+                  <Feather name='trash'></Feather>
                   <span>Bin</span>
                 </div>
               </NavLink>
@@ -117,7 +117,7 @@ const Sidebar = (props) => {
                 aria-expanded='false'
                 className='dropdown-toggle'>
                 <div className=''>
-                  <Feather name='activity'></Feather>
+                  <Feather name='truck'></Feather>
                   <span>Vehicle</span>
                 </div>
               </NavLink>

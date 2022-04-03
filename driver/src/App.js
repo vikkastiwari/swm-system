@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import $ from 'jquery';
 import '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 import * as actions from './Store/actions/index';
 import PrivateRoute from './Component/PrivateRoute';
 // import PrivateRoute from './Component/';
@@ -38,13 +38,35 @@ axios.interceptors.request.use(
   }
 );
 
-
 class App extends Component {
+  tracker = null;
   componentDidMount() {
     this.props.userAutoLogin();
+    const id = this.props?.user?._id;
+    if (id) {
+      this.props.getData(id);
+    }
+    console.log(this.props.userData);
   }
 
   render() {
+    if (!this.tracker && this.props.userData.vehicleId.length > 0) {
+      this.tracker = setInterval(
+        (userData) => {
+          navigator.geolocation.getCurrentPosition((p) => {
+            console.log(p.coords.latitude);
+            console.log(p.coords.longitude);
+            this.props.updateLocation({
+              id: userData.vehicleId[0]._id,
+              lat: p.coords.latitude,
+              lng: p.coords.longitude,
+            });
+          });
+        },
+        3000,
+        this.props.userData
+      );
+    }
     return (
       <>
         <ScrollToTop>
@@ -88,7 +110,7 @@ const MainContent = (props) => (
           {/* <Route path="" element={} /> */}
           {/* <Footer /> */}
           {/* </Routes> */}
-          <Outlet/>
+          <Outlet />
         </div>
       </div>
     </div>
@@ -96,15 +118,18 @@ const MainContent = (props) => (
 );
 
 const mapStateToProps = (state) => {
-   authToken = state.auth.token;
+  authToken = state.auth.token;
   return {
-    
+    userData: state.user.userData,
+    user: state.auth.user,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    userAutoLogin : () => dispatch(actions.userAutoLogin()),
+    userAutoLogin: () => dispatch(actions.userAutoLogin()),
+    getData: (id) => dispatch(actions.getSingleUser(id)),
+    updateLocation: (body) => dispatch(actions.updateLocation(body)),
   };
 };
 

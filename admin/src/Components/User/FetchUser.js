@@ -304,6 +304,7 @@ class FetchUser extends Component {
   viewStudent = (userId) => {
     this.setState({ viewUserId: userId });
     console.log(userId);
+    this.props.getDailyLog(userId);
     this.props.getSingleUser(userId);
     $("#userDetail").modal("show");
   };
@@ -393,23 +394,21 @@ class FetchUser extends Component {
     }
 
     let userDropdown = (
-      <div className="col-xl-6 col-lg-8 col-md-8 col-sm-12 col-12 text-center">
-        <div className="form-group row mb-4">
+      <div className='col-xl-6 col-lg-8 col-md-8 col-sm-12 col-12 text-center'>
+        <div className='form-group row mb-4'>
           <label
-            htmlFor="colFormLabelLg"
-            className="col-sm-2 col-form-label col-form-label-lg font-weight-bold"
-          >
+            htmlFor='colFormLabelLg'
+            className='col-md-3 col-sm-12 col-form-label col-form-label-lg font-weight-bold'>
             User Type
           </label>
-          <div className="col-sm-10">
+          <div className='col-md-9 col-sm-12'>
             <SingleDropdown
-              placeholder="Select User Type..."
-              id="user-type"
-              change={(e) => this.changeHandler(e, "userType")}
-              value={this.state.userType}
-            >
-              <option value="driver">Drive</option>
-              <option value="admin">Admin</option>
+              placeholder='Select User Type...'
+              id='user-type'
+              change={(e) => this.changeHandler(e, 'userType')}
+              value={this.state.userType}>
+              <option value='driver'>Drive</option>
+              <option value='admin'>Admin</option>
             </SingleDropdown>
           </div>
         </div>
@@ -518,7 +517,7 @@ class FetchUser extends Component {
                 </Modal>
 
                 {/* <!-- Modal --> */}
-                <UserView user={this.props.user} />
+                <UserView user={this.props.user} dailyLog={this.props.dailyLog}/>
               </div>
             </div>
           </div>
@@ -532,6 +531,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.user.user,
     users: state.user.users,
+    dailyLog: state.other.dailyLog,
   };
 };
 
@@ -542,6 +542,7 @@ const mapDispatchToProps = (dispatch) => {
     deleteUser: (data) => dispatch(actions.deleteUser(data)),
     getSingleUser: (data) => dispatch(actions.getSingleUser(data)),
     updateUser: (data) => dispatch(actions.updateUser(data)),
+    getDailyLog: (id) => dispatch(actions.getDailyLog(id)),
   };
 };
 

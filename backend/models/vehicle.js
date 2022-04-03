@@ -17,10 +17,17 @@ const vehicleSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-
   active: {
     type: Boolean,
     required: true,
+  },
+  lat: {
+    type: String,
+    required: false,
+  },
+  lng: {
+    type: String,
+    required: false,
   },
 });
 

@@ -141,7 +141,7 @@ class ActivityFaculty extends Component {
       <>
         {/*  <!--  BEGIN CONTENT AREA  --> */}
         <div id='content' className='main-content'>
-          <div className='container' style={{ margin: 'auto' }}>
+          <div className='' style={{ margin: 'auto' }}>
             <div className='container'>
               <div className='row layout-top-spacing'>
                 <div

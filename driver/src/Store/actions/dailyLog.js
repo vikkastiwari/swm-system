@@ -2,12 +2,12 @@ import axios from 'axios';
 import * as urls from '../urls';
 import * as actionTypes from './actionTypes';
 
-export const overview = () => async (dispatch) => {
+export const getDailyLog = (id) => async (dispatch) => {
   axios
-    .get(urls.OVERVIEW)
+    .get(urls.GET_DAILY_LOG + id)
     .then((res) => {
       dispatch({
-        type: actionTypes.OVERVIEW,
+        type: actionTypes.GET_DAILY_LOG,
         data: res.data.payload,
       });
     })
@@ -17,15 +17,17 @@ export const overview = () => async (dispatch) => {
     });
 };
 
-
-export const updateLocation = (body) => async (dispatch) => {
+export const updateDailyLog = ({id, ...body}) => async (dispatch) => {
   axios
-    .post(urls.UPDATE_LOCATION, body)
+    .put(urls.UPDATE_DAILY_LOG + id, body)
     .then((res) => {
-      console.log(res.data);
+      dispatch({
+        type: actionTypes.GET_DAILY_LOG,
+        data: res.data.payload,
+      });
     })
     .catch((err) => {
       console.log(err);
-      // dispatch({ type: 'Error', error: err });
+      dispatch({ type: 'Error', error: err });
     });
 };

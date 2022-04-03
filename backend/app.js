@@ -5,24 +5,32 @@ const url = (l1, l2) =>
 const axios = require('axios');
 let XLSX = require('xlsx');
 
-let workbook = XLSX.readFile('dataset.csv');
+let workbook = XLSX.readFile('VRP_dataset.csv');
 
-
-const currentData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+const currentData = XLSX.utils.sheet_to_json(
+  workbook.Sheets[workbook.SheetNames[0]]
+);
 
 (async () => {
   let i;
   for (i = 1; i < currentData.length; i++) {
-    let response = await axios.get(
-      url(
-        currentData[i-1]['Node Location X'] +
-          ',' +
-          currentData[i]['Node Location Y'],
-        currentData[i]['Node Location X'] +
-          ',' +
-          currentData[i]['Node Location Y']
-      )
-    );
+  // for (i = 1; i < 3; i++) {
+    let response ;
+    try {
+       response = await axios.get(
+        url(
+          currentData[i - 1]['Node Location X'] +
+            ',' +
+            currentData[i]['Node Location Y'],
+          currentData[i]['Node Location X'] +
+            ',' +
+            currentData[i]['Node Location Y']
+        )
+      );
+    } catch (err) {
+      console.log(err);
+      continue;
+    }
     let distance = response.data.routes[0]['summary']['lengthInMeters'];
     let traffic = response.data.routes[0]['summary']['trafficDelayInSeconds'];
     let timeWithoutTraffic =
@@ -35,13 +43,13 @@ const currentData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames
     console.log('Percentage : ', trafficPercentage);
 
     if (trafficPercentage < 25) {
-      currentData[i-1]['Traffic'] = 1;
+      currentData[i - 1]['Traffic'] = 1;
       console.log('Traffic Value : 1');
     } else if (trafficPercentage < 50) {
-      currentData[i-1]['Traffic'] = 2;
+      currentData[i - 1]['Traffic'] = 2;
       console.log('Traffic Value : 2');
     } else {
-      currentData[i-1]['Traffic'] = 3;
+      currentData[i - 1]['Traffic'] = 3;
       console.log('Traffic Value : 3');
     }
   }
@@ -49,9 +57,8 @@ const currentData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames
   const nworkbook = XLSX.utils.book_new();
   let ws = XLSX.utils.json_to_sheet(currentData);
   XLSX.utils.book_append_sheet(nworkbook, ws, 'Sheet1');
-  XLSX.writeFile(nworkbook, 'new.csv');
+  XLSX.writeFile(nworkbook, 'newVRP_dataset.csv');
 })();
-
 
 // Make a request for a user with a given ID
 
@@ -127,4 +134,3 @@ const currentData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames
 //     }
 //   }
 // })();
-

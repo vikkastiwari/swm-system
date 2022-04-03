@@ -9,8 +9,8 @@ class RightSidebar extends Component {
       <div className='sidebar sidebar-right'>
         <header className='row m-0 fixed-header'>
           <div className='left'>
-            <a href='javascript:void(0)' className='menu-left-close'>
-              <i className='material-icons'>keyboard_backspace</i>
+            <a href='#' className='menu-left-close'>
+              <i className='material-icons'>close</i>
             </a>
           </div>
           <div className='col center'>

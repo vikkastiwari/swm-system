@@ -36,3 +36,8 @@ export const USER_CHANGE_PASSWORD = "USER_CHANGE_PASSWORD";
 
 //Other
 export const OVERVIEW = "OVERVIEW";
+export const UPDATE_LOCATION = "UPDATE_LOCATION";
+
+//dailyLog
+export const GET_DAILY_LOG = 'GET_DAILY_LOG';
+export const UPDATE_DAILY_LOG = 'UPDATE_DAILY_LOG';

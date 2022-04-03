@@ -9,6 +9,7 @@ class Map extends React.Component {
     const id = this.props?.user?._id;
     if (id) {
       this.props.getData(id);
+      this.props.getDailyLog(id);
     }
   }
 
@@ -126,32 +127,58 @@ class Map extends React.Component {
     });
   };
 
+  collectHandler = (id) => {
+    const binIds = [];
+    this.props.dailyLog.binIds.forEach(bin => {
+      let myBin = {...bin};
+      console.log(myBin);
+      if (myBin._id.toString() === id) {
+        myBin = { ...myBin, collected : true};
+      }
+      binIds.push(myBin);
+    });
+    console.log(binIds);
+    this.props.updateDailyLog({id: this.props.user._id, binIds});
+  }
+
   render() {
-    console.log(this.props.userData);
+    console.log(this.props.dailyLog);
 
     let myBins = null;
     if (
-      this.props.userData &&
-      this.props.userData.binIds &&
-      this.props.userData.binIds.length > 0
-    ){
-      myBins = this.props.userData.binIds.map((bin) => (
+      this.props.dailyLog &&
+      this.props.dailyLog.binIds &&
+      this.props.dailyLog.binIds.length > 0
+    ) {
+      myBins = this.props.dailyLog.binIds.map((bin) => (
         <li className='list-group-item' key={bin._id}>
           <a href='#' className='media shadow-15'>
             <div className='media-body'>
-              <h5>{bin.bin}</h5>
+              <h5>{bin.title}</h5>
               {/* <p className='mb-0'>Start Date: 28, July 2018</p> */}
-              <h2 className='title-number-carousel color-primary'>
+              {/* <h2 className='title-number-carousel color-primary'>
                 <span className='text-primary'>75</span>
                 <small>/100 %</small>
-              </h2>
+              </h2> */}
             </div>
             <div className='w-auto'>
-              <small className='text-success effort-time'>
+              {bin.collected ? (
+                <button disabled className='btn btn-primary'>
+                  Collected
+                </button>
+              ) : (
+                <button
+                  onClick={() => this.collectHandler(bin._id)}
+                  className='btn btn-primary'>
+                  Picked up
+                </button>
+              )}
+
+              {/* <small className='text-success effort-time'>
                 {' '}
                 2hrs <i className='material-icons'>arrow_drop_up</i>
               </small>
-              <div className='dynamicsparkline'></div>
+              <div className='dynamicsparkline'></div> */}
             </div>
           </a>
         </li>
@@ -266,12 +293,15 @@ const mapStateToProps = (state) => {
   return {
     userData: state.user.userData,
     user: state.auth.user,
+    dailyLog: state.dailyLog.dailyLog,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getData: (id) => dispatch(actions.getSingleUser(id)),
+    getDailyLog: (id) => dispatch(actions.getDailyLog(id)),
+    updateDailyLog: (data) => dispatch(actions.updateDailyLog(data)),
   };
 };
 

@@ -22,7 +22,7 @@ class Profile extends Component {
               <div className='row layout-top-spacing justify-content-center'>
                 <div
                   id='tableCheckbox'
-                  className='col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing'>
+                  className='col-xl-8 col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing'>
                   <div className='statbox widget box box-shadow'>
                     <div className='widget-header'>
                       <div className='row '>

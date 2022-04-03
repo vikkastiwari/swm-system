@@ -16,3 +16,18 @@ export const overview = () => async (dispatch) => {
       dispatch({ type: 'Error', error: err });
     });
 };
+
+export const getDailyLog = (id) => async (dispatch) => {
+  axios
+    .get(urls.GET_DAILY_LOG + id)
+    .then((res) => {
+      dispatch({
+        type: actionTypes.GET_DAILY_LOG,
+        data: res.data.payload,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch({ type: 'Error', error: err });
+    });
+};

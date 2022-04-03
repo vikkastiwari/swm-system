@@ -8,6 +8,12 @@ router.get('/', auth('admin', 'driver'), handler(vehicleController.getVehicle));
 
 router.post('/', auth('admin', 'driver'), handler(vehicleController.createVehicle));
 
+router.post(
+  '/updateLocation',
+  auth('admin', 'driver'),
+  handler(vehicleController.updateLiveLocation)
+);
+
 router.get('/:id', auth('admin', 'driver'), handler(vehicleController.getSingleVehicle));
 
 router.put('/:id', auth('admin', 'driver'), handler(vehicleController.updateVehicle));

@@ -37,9 +37,9 @@ const Header = () => {
     });
 
     /* search control visible slide hide slide */
-    $(".searchbtn").on("click", function () {
-      $(".searchcontrol").addClass("active");
-    });
+    // $(".searchbtn").on("click", function () {
+    //   $(".searchcontrol").addClass("active");
+    // });
 
     $(".close-search").on("click", function () {
       $(".searchcontrol").removeClass("active");
@@ -48,10 +48,10 @@ const Header = () => {
   return (
     <>
       <form className='searchcontrol'>
-        <div className='input-group'>
+        {/* <div className='input-group'>
           <div className='input-group-prepend'>
             <button type='button' className='input-group-text close-search'>
-              <i className='material-icons'>keyboard_backspace</i>
+              <i className='material-icons'>close</i>
             </button>
           </div>
           <input
@@ -60,11 +60,11 @@ const Header = () => {
             placeholder='Search...'
             aria-label='Username'
           />
-        </div>
+        </div> */}
       </form>
       <header className='row m-0 fixed-header'>
         <div className='left'>
-          <a href='javascript:void(0)' className='menu-left'>
+          <a href='#' className='menu-left'>
             {/* <div className='menu-left'> */}
             <i className='material-icons'>menu</i>
             {/* </div> */}
@@ -79,10 +79,10 @@ const Header = () => {
           </a>
         </div>
         <div className='right'>
-          <a href='javascript:void(0)' className='searchbtn'>
+          {/* <a href='#' className='searchbtn'>
             <i className='material-icons'>search</i>
-          </a>
-          <a href='javascript:void(0)' className='menu-right'>
+          </a> */}
+          <a href='#' className='menu-right'>
             <i className='material-icons'>person</i>
           </a>
         </div>

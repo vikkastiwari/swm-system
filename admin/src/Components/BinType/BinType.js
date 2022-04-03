@@ -9,6 +9,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { checkValidity } from "../../shared/utility";
 import Notification from "../Notification/Notification";
 import Swal from "sweetalert2";
+import Loader from '../Loader/Loader';
 
 class BinType extends Component {
   state = {
@@ -139,7 +140,9 @@ class BinType extends Component {
 
       table = <SimpleTable header={header}>{tableBody}</SimpleTable>;
     } else {
-      table = (
+      table = this.props.loading ? (
+        <Loader />
+      ) : (
         <div className='text-center font-weight-bold'>No Bin Type Found.</div>
       );
     }
@@ -239,6 +242,7 @@ class BinType extends Component {
 const mapStateToProps = (state) => {
   return {
     binTypes: state.CRUD.binTypes,
+    loading: state.auth.loading
   };
 };
 

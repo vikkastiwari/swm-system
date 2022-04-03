@@ -2,7 +2,7 @@ const FullScreenMenu = () => {
     return ( <div
             className="modal fade popup-fullmenu"
             id="fullscreenmenu"
-            tabindex="-1"
+            tabIndex="-1"
             role="dialog"
             aria-hidden="true">
             <div className="modal-dialog" role="document">

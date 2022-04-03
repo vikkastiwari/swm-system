@@ -107,7 +107,36 @@ const deleteVehicle = async (req, res) => {
     success: true,
     alerts: [{ type: 'success', message: 'Vehicle deleted successfully.' }],
   });
-  
+};
+
+const updateLiveLocation = async (req, res) => {
+  console.log(req.body);
+  const { id, lat, lng } = req.body;
+
+  if (!mongoose.isValidObjectId(id) || !lat || !lng) {
+    return res.status(400).send({
+      success: false,
+      alerts: [],
+    });
+  }
+
+  const vehicle = await Vehicle.findByIdAndUpdate(
+    id,
+    { lat, lng },
+    { new: true }
+  );
+
+  if (!vehicle) {
+    return res.status(404).send({
+      success: false,
+      alerts: [],
+    });
+  }
+
+  return res.status(200).send({
+    success: true,
+    alerts: [],
+  });
 };
 
 module.exports = {
@@ -116,4 +145,5 @@ module.exports = {
   createVehicle,
   updateVehicle,
   deleteVehicle,
+  updateLiveLocation,
 };

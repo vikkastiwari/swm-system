@@ -82,7 +82,7 @@ class App extends Component {
       <>
         {!this.props.token ? (
           <>
-            <Loader />
+            {/* <Loader /> */}
             <Switch>
               {/* <Route
                 path='/404'

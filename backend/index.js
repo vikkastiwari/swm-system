@@ -21,8 +21,14 @@ app.use(express.json());
 
 app.use(cors({ exposedHeaders: ['x-auth-token'] }));
 
-// app.use('/', (req, res) => {
-//   return res.send(`All is well!`);
+// app.use(async (req, res, next) => {
+//   let myPromise = new Promise(async (resolve, reject)=>{
+//     setTimeout(() => {
+//       resolve();
+//     }, 5000);
+//   });
+//   await myPromise;
+//   next();
 // });
 
 
@@ -32,6 +38,7 @@ app.use('/bin', require('./routes/bin'));
 app.use('/binType', require('./routes/binType'));
 app.use('/vehicle', require('./routes/vehicle'));
 app.use('/user', require('./routes/user'));
+app.use('/dailyLog', require('./routes/dailyLog'));
 
 app.use((err, req, res, next) => {
   if (err) {

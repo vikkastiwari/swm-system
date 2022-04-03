@@ -5,7 +5,7 @@ import * as actions from "../../Store/actions";
 import Feather from "../Icons/Feather";
 
 class Login extends Component {
-  state = { email: "", password: "" };
+  state = { email: "", password: ""};
   
   componentDidMount() {
     var togglePassword = document.getElementById("toggle-password");
@@ -19,6 +19,12 @@ class Login extends Component {
         }
       });
     }
+    document.body.style.backgroundColor = "white";
+  }
+  
+  componentWillUnmount(){
+    document.body.style.backgroundColor = '#f1f2f3';
+
   }
 
   inputHandler = (event, identifier) => {

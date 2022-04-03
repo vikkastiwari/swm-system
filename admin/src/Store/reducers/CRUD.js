@@ -94,14 +94,7 @@ const reducer = (state = initialState, action) => {
     case "GET":
       return getData(state, action);
 
-    // case "CREATE":
-    //   return setIngredients(state, action);
-
-    // case "UPDATE":
-    //   return fetchIngredientsFailed(state, action);
-
-    // case "DELETE":
-    //   return fetchIngredientsFailed(state, action);
+   
 
     default:
       return state;

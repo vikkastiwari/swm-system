@@ -39,3 +39,8 @@ export const USER_CHANGE_PASSWORD = "/password/change";
 
 //other
 export const OVERVIEW = "/other/overview";
+export const UPDATE_LOCATION = '/vehicle/updateLocation';
+
+//dailyLog
+export const GET_DAILY_LOG = "/dailyLog/"
+export const UPDATE_DAILY_LOG = '/dailyLog/';

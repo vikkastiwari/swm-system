@@ -10,20 +10,31 @@ const StudentView = (props) => {
     props.user &&
     props.user.binIds &&
     props.user.binIds.length &&
-    props.user.binIds.length !== 0
+    props.user.binIds.length !== 0 &&
+    props.dailyLog &&
+    props.dailyLog.binIds &&
+    props.dailyLog.binIds.length > 0
   ) {
-    let tableBody = props.user.binIds.map((bin, i) => (
-      <tr key={bin._id}>
-        <td className='text-center'>{i + 1}</td>
-        <td className='text-center'>{bin.bin}</td>
-        <td className='text-center'>{bin.location}</td>
-        <td className='text-center'>{bin.latitude}</td>
-        <td className='text-center'>{bin.longitude}</td>
-      </tr>
-    ));
+    let tableBody = props.user.binIds.map((bin, i) => {
+      console.log(bin);
+      console.log(props.dailyLog.binIds);
+      let gotBin = props.dailyLog.binIds.find((b) => b._id === bin._id);
+      return (
+        <tr key={bin._id}>
+          <td className='text-center'>{i + 1}</td>
+          <td className='text-center'>{bin.bin}</td>
+          <td className='text-center'>{bin.location}</td>
+          <td className='text-center'>{bin.latitude}</td>
+          <td className='text-center'>{bin.longitude}</td>
+          <td className='text-center'>
+            {gotBin?.collected ? 'Collected' : 'Pending'}
+          </td>
+        </tr>
+      );
+    });
     console.log(props.user.binIds);
 
-    const header = ["#", "Bin", "Location", "Latitude", "Longitude"];
+    const header = ['#', 'Bin', 'Location', 'Latitude', 'Longitude', 'Status'];
     binTable = (
       <Datatable id='user-detail-table' header={header}>
         {tableBody}

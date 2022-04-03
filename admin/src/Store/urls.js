@@ -39,3 +39,4 @@ export const USER_CHANGE_PASSWORD = "/password/change";
 
 //other
 export const OVERVIEW = "/other/overview";
+export const GET_DAILY_LOG = '/dailyLog/';

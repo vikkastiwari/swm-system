@@ -11,6 +11,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import auth from './Store/reducers/auth';
 import user from './Store/reducers/user';
+import dailyLog from './Store/reducers/dailyLog';
 
 const composeEnhancers =
   process.env.NODE_ENV === "development"
@@ -20,6 +21,7 @@ const composeEnhancers =
 const rootReducer = combineReducers({
   auth,
   user,
+  dailyLog,
 });
 
 const store = createStore(

@@ -1,12 +1,18 @@
-import React from "react";
+import React from 'react';
+import { BeatLoader } from 'react-spinners';
+
 const Loader = () => {
   return (
-    <div id='load_screen'>
-      <div className='loader'>
-        <div className='loader-content'>
-          <div className='spinner-grow align-self-center'></div>
-        </div>
-      </div>
+    <div
+      style={{
+        width: '100%',
+        // height: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        flexDirection: 'column',
+        textAlign:'center'
+      }}>
+      <BeatLoader color='#1b55e2' />
     </div>
   );
 };

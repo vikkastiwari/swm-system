@@ -3,7 +3,9 @@ const mongoose = require('mongoose');
 const BinType = require('../models/binType');
 
 const getBinType = async (req, res) => {
+
   const binTypes = await BinType.find();
+ 
   return res.status(200).send({
     success: true,
     payload: binTypes,

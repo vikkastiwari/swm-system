@@ -15,7 +15,7 @@ const Footer = (props) => {
   return (
     <div className="footer-wrapper shadow-15">
       <div className="footer">
-        <div className="row mx-0">
+        {/* <div className="row mx-0">
           <div className="col">Pickup Portal</div>
           <div className="col-7 text-right">
             <a href="#" className="social">
@@ -31,7 +31,7 @@ const Footer = (props) => {
               <img src="img/twitter.png" alt="" />
             </a>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="footer dark">
         <div className="row mx-0">

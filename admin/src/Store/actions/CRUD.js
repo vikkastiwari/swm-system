@@ -3,24 +3,30 @@ import * as urls from "../urls";
 import * as actionTypes from "./actionTypes";
 
 export const getSingle = (data) => (dispatch) => {
+  dispatch({ type: actionTypes.LOADING, data: true });
   axios
     .get(urls[data.type] + data.id)
     .then((res) => {
+      dispatch({ type: actionTypes.LOADING, data: false });
       dispatch({ type: actionTypes[data.type], singleData: res.data.payload });
     })
     .catch((err) => {
+      dispatch({ type: actionTypes.LOADING, data: false });
       dispatch({ type: "Error", error: err });
     });
 };
 
 export const getData = (data) => (dispatch) => {
+  dispatch({ type: actionTypes.LOADING, data: true });
   axios
     .get(urls[data.type])
     .then((res) => {
+      dispatch({ type: actionTypes.LOADING, data: false });
       console.log(res.data);
       dispatch({ type: actionTypes[data.type], data: res.data.payload });
     })
     .catch((err) => {
+      dispatch({ type: actionTypes.LOADING, data: false });
       dispatch({ type: "Error", error: err });
     });
 };
@@ -75,6 +81,7 @@ export const updateData = (data) => (dispatch) => {
 };
 
 export const deleteData = (data) => (dispatch) => {
+  dispatch({ type:actionTypes.LOADING, data: true});
   axios
     .delete(urls[data.type] + data.id)
     .then((res) => {
@@ -83,16 +90,19 @@ export const deleteData = (data) => (dispatch) => {
       axios
         .get(urls["GET_" + resource])
         .then((res2) => {
+          dispatch({ type: actionTypes.LOADING, data: false });
           dispatch({
             type: actionTypes['GET_' + resource],
             data: res2.data.payload,
           });
         })
         .catch((err) => {
+          dispatch({ type: actionTypes.LOADING, data: false });
           dispatch({ type: "Error", error: err });
         });
     })
     .catch((err) => {
+      dispatch({ type: actionTypes.LOADING, data: false });
       dispatch({ type: "Error", error: err });
     });
 };
